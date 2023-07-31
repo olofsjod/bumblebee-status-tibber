@@ -44,6 +44,9 @@ class Module(core.module.Module):
         home = loop.run_until_complete(start())
 
         price_info = home.current_price_info
-        return f"{price_info['total']} SEK/kWh"
+        if "total" in price_info:
+            return f"{price_info['total']} SEK/kWh"
+        else:
+            return "NaN SEK/kWh"
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
